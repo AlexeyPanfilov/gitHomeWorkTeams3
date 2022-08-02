@@ -56,10 +56,22 @@ public class Main {
                 continue;
             }
 
-            numb[numProduct] += amount;//сумма штук введенного
+            if (numProduct < 0 || numProduct >= products.length) {
+                System.out.println("Некорректный ввод позиции! Нужно выбрать номер позиции из списка!");
+                continue;
+            }
 
-            int sum = amount * prises[numProduct];
-            ollSum += sum;// подсчет общей суммы списка
+            if (amount == 0) {
+                numb [numProduct] = 0;
+            }
+
+            if ((numb[numProduct] + amount) < 0) {
+                numb[numProduct] = 0;
+            } else {
+                numb[numProduct] += amount;
+            }
+
+
         }
 
         System.out.println("Ваша корзина: ");
@@ -68,6 +80,7 @@ public class Main {
             if (numb[i] != 0) {
                 System.out.println(products[i] + " " + numb[i] + " шт " +
                         prises[i] + " руб/шт " + (numb[i] * prises[i]) + " в сумме");
+                ollSum += (numb[i] * prises[i]);
             }
         }
 
