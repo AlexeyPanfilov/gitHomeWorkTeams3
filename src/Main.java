@@ -80,9 +80,15 @@ public class Main {
             }
 
             if (numProduct < products.length) {
-                numb[numProduct] += amount;//сумма штук введенного
-                int sum = amount * prises[numProduct];
-                ollSum += sum;// подсчет общей суммы списка
+                if (amount == 0) {
+                    numb [numProduct] = 0;
+                }
+
+                if ((numb[numProduct] + amount) < 0) {
+                    numb[numProduct] = 0;
+                } else {
+                    numb[numProduct] += amount;
+                }
             } else {
                 saleNumProduct = numProduct - products.length;
                 saleAmount = amount;
@@ -96,6 +102,7 @@ public class Main {
             if (numb[i] != 0) {
                 System.out.println(products[i] + " " + numb[i] + " шт " +
                         prises[i] + " руб/шт " + (numb[i] * prises[i]) + " в сумме");
+                ollSum += (numb[i] * prises[i]);
             }
         }
 
