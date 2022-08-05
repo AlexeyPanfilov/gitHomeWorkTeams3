@@ -91,8 +91,17 @@ public class Main {
                 }
             } else {
                 saleNumProduct = numProduct - products.length;
-                saleAmount = amount;
-                saleNumb[saleNumProduct] += saleAmount;//сумма штук введенного
+                if (amount == 0) {
+                    saleNumb[saleNumProduct] = 0;
+                }
+                if ((saleNumb[saleNumProduct] + amount) < 0) {
+                    saleNumb[saleNumProduct] = 0;
+                } else {
+                    //saleAmount = amount;
+                    saleNumb[saleNumProduct] += amount; //saleAmount;//сумма штук введенного
+                }
+
+
             }
         }
 
